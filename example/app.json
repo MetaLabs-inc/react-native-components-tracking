@@ -1,0 +1,23 @@
+{
+  "name": "react-native-components-tracking-example",
+  "displayName": "ComponentsTracking Example",
+  "expo": {
+    "name": "react-native-components-tracking-example",
+    "slug": "react-native-components-tracking-example",
+    "description": "Example app for react-native-components-tracking",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
