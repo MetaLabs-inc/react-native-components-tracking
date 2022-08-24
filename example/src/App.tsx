@@ -1,18 +1,26 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-components-tracking';
+import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import { ComponentTracking } from 'react-native-components-tracking';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+  const baseOnPress = () => {
+    console.warn('button was pressed')
+  }
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <ComponentTracking
+        triggerFunctionKey={'onPress'}
+        trackEvent={(event:string) => {
+          console.warn('an event tracked',event)
+        }}
+        event={'BUTTON_CLICK'}
+        idKey={'HELLO_WORLD'}>
+        <TouchableOpacity
+          onPress={baseOnPress}>
+          <Text>Hello World</Text>
+        </TouchableOpacity>
+      </ComponentTracking>
     </View>
   );
 }
@@ -22,10 +30,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
   },
 });
