@@ -35,7 +35,6 @@ const touchEventStyles = StyleSheet.create({
 const DEFAULT_BREADCRUMB_CATEGORY = 'touch';
 const DEFAULT_BREADCRUMB_TYPE = 'user';
 const DEFAULT_MAX_COMPONENT_TREE_SIZE = 20;
-
 const PROP_KEY = 'component-tracking-label';
 
 interface ElementInstance {
@@ -101,10 +100,6 @@ class TouchEventBoundary extends React.Component<TouchEventBoundaryProps> {
         (ignoreName instanceof RegExp && name.match(ignoreName))
     );
   }
-
-  // Originally was going to clean the names of any HOCs as well but decided that it might hinder debugging effectively. Will leave here in case
-  // private readonly _cleanName = (name: string): string =>
-  //   name.replace(/.*\(/g, "").replace(/\)/g, "");
 
   /**
    * Traverses through the component tree when a touch happens and logs it.
