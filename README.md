@@ -169,7 +169,88 @@ export const CustomTextInput: React.FC<LayoutProps> = (props) => {
 ```
 
 Another cool feature we included on this library is the possibility to track automatically all the touch events made into the application.
-...
+
+To use this feature you should:
+
+1. Wrap your app on the `TouchEventBoundary` component
+2. Specify `component-tracking-label` on each component you want to track touches
+
+```ts
+import * as React from 'react';
+import { useState } from 'react';
+
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
+import { TouchEventBoundary } from 'react-native-components-tracking';
+
+export default function App() {
+  //TouchableOpacity
+  const baseOnPress = () => {
+    console.warn('button was pressed');
+  };
+
+  return (
+    <TouchEventBoundary
+      trackEvent={(event: string) => {
+        console.warn('an event tracked with event boundary', event);
+      }}
+    >
+      <SafeAreaView style={styles.safeAreaViewContainer}>
+        <ScrollView contentContainerStyle={styles.container}>
+          <TouchableOpacity
+            onPress={baseOnPress}
+            style={styles.button}
+            component-tracking-label={'dummy_button'}
+          >
+            <Text>Dummy button</Text>
+          </TouchableOpacity>
+          <Text style={styles.baseText} component-tracking-label={'dummy_text'}>
+            An example text to be automatically tracked on press
+          </Text>
+        </ScrollView>
+      </SafeAreaView>
+    </TouchEventBoundary>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeAreaViewContainer: { flex: 1 },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#FFD260',
+    padding: 10,
+  },
+  baseText: {
+    fontFamily: 'Cochin',
+  },
+});
+```
+
+### Props
+
+**category** \
+The category assigned to the breadcrumb that is logged by the touch event.
+
+**type** \
+The type assigned to the breadcrumb that is logged by the touch event.
+
+**maxComponentTreeSize** \
+default: 20. The max number/depth of components to display when logging a touch's component tree.
+
+**ignoreNames** \
+Array<string | RegExp>, Accepts strings and regular expressions. Component names to ignore when logging the touch event. This prevents unhelpful logs such as "Touch event within element: View" where you still can't tell which View it occurred in.
+
+---
 
 ## Contributing
 
@@ -179,7 +260,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 MIT
 
-## Contributors
+## Made with ❤️ at MetaLabs
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -187,6 +268,7 @@ MIT
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Marcoo09"><img src="https://avatars.githubusercontent.com/Marcoo09" width="100px;" alt=""/><br /><sub><b>Marco Fiorito</b></sub></a></td>
+    <td align="center"><a href="https://github.com/matiassalles99"><img src="https://avatars.githubusercontent.com/matiassalles99" width="100px;" alt=""/><br /><sub><b>Matias Salles</b></sub></a></td>
   </tr>
 </table>
 

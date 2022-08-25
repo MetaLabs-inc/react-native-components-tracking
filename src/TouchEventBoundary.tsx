@@ -5,11 +5,11 @@ export type TouchEventBoundaryProps = {
   /**
    * The category assigned to the breadcrumb that is logged by the touch event.
    */
-  breadcrumbCategory?: string;
+  category?: string;
   /**
    * The type assigned to the breadcrumb that is logged by the touch event.
    */
-  breadcrumbType?: string;
+  type?: string;
   /**
    * The max number of components to display when logging a touch's component tree.
    */
@@ -31,8 +31,8 @@ const touchEventStyles = StyleSheet.create({
   },
 });
 
-const DEFAULT_BREADCRUMB_CATEGORY = 'touch';
-const DEFAULT_BREADCRUMB_TYPE = 'user';
+const DEFAULT_CATEGORY = 'touch';
+const DEFAULT_TYPE = 'user';
 const DEFAULT_MAX_COMPONENT_TREE_SIZE = 20;
 const PROP_KEY = 'component-tracking-label';
 
@@ -51,8 +51,8 @@ interface ElementInstance {
 class TouchEventBoundary extends React.Component<TouchEventBoundaryProps> {
   public static displayName: string = '__ComponentTracking.TouchEventBoundary';
   public static defaultProps: Partial<TouchEventBoundaryProps> = {
-    breadcrumbCategory: DEFAULT_BREADCRUMB_CATEGORY,
-    breadcrumbType: DEFAULT_BREADCRUMB_TYPE,
+    category: DEFAULT_CATEGORY,
+    type: DEFAULT_TYPE,
     ignoreNames: [],
     maxComponentTreeSize: DEFAULT_MAX_COMPONENT_TREE_SIZE,
     trackEvent: () => {
@@ -83,7 +83,7 @@ class TouchEventBoundary extends React.Component<TouchEventBoundaryProps> {
     activeLabel?: string
   ): void {
     this.props.trackEvent(
-      `${this.props.breadcrumbCategory}_${this.props.breadcrumbType}_${activeLabel}`
+      `${this.props.category}_${this.props.type}_${activeLabel}`
     );
   }
 
