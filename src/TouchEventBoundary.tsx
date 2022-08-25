@@ -21,9 +21,8 @@ export type TouchEventBoundaryProps = {
   ignoreNames?: Array<string | RegExp>;
   /**
    * The track event method triggered when a touch event is detected
-  */
+   */
   trackEvent: (eventName: string) => void;
-
 };
 
 const touchEventStyles = StyleSheet.create({
@@ -57,8 +56,8 @@ class TouchEventBoundary extends React.Component<TouchEventBoundaryProps> {
     ignoreNames: [],
     maxComponentTreeSize: DEFAULT_MAX_COMPONENT_TREE_SIZE,
     trackEvent: () => {
-      console.warn('**trackEvent not defined**')
-    }
+      console.warn('**trackEvent not defined**');
+    },
   };
 
   /**
@@ -80,12 +79,12 @@ class TouchEventBoundary extends React.Component<TouchEventBoundaryProps> {
    * Logs the touch event given the component tree names and a label.
    */
   private _logTouchEvent(
-    componentTreeNames: string[],
+    _componentTreeNames: string[],
     activeLabel?: string
   ): void {
-    console.warn('componentTreeNames', componentTreeNames)
-    console.warn('activeLabel', activeLabel)
-    this.props.trackEvent(`${this.props.breadcrumbCategory}_${this.props.breadcrumbType}_${activeLabel}`)
+    this.props.trackEvent(
+      `${this.props.breadcrumbCategory}_${this.props.breadcrumbType}_${activeLabel}`
+    );
   }
 
   /**
