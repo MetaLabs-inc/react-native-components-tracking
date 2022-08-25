@@ -55,9 +55,9 @@ export default function App() {
           <TouchableOpacity
             onPress={baseOnPress}
             style={styles.button}
-            component-tracking-label={'hello_world'}
+            component-tracking-label={'dummy_button'}
           >
-            <Text>Hello World</Text>
+            <Text>Dummy button</Text>
           </TouchableOpacity>
           <ComponentTracking
             triggerFunctionKey={'onValueChange'}
@@ -75,6 +75,9 @@ export default function App() {
               value={isEnabled}
             />
           </ComponentTracking>
+          <Text style={styles.baseText} component-tracking-label={'dummy_text'}>
+            An example text to be automatically tracked on press
+          </Text>
         </ScrollView>
       </SafeAreaView>
     </TouchEventBoundary>
@@ -99,5 +102,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFD260',
     padding: 10,
+  },
+  baseText: {
+    fontFamily: 'Cochin',
   },
 });
