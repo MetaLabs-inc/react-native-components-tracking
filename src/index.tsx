@@ -1,4 +1,5 @@
 import React, {ReactElement} from 'react';
+import { TouchEventBoundary } from './TouchEventBoundary'
 
 interface LayoutProps {
   children: ReactElement;
@@ -26,3 +27,5 @@ export const ComponentTracking: React.FC<LayoutProps> = ({
   const Element = React.cloneElement(children, newProps);
   return Element;
 };
+
+export {TouchEventBoundary}
