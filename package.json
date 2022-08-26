@@ -35,13 +35,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/Marcoo09/react-native-components-tracking",
+  "repository": "https://github.com/MetaLabs-inc/react-native-components-tracking",
   "author": "Marco Fiorito <marcofiorito1@gmail.com> (https://github.com/Marcoo09)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Marcoo09/react-native-components-tracking/issues"
+    "url": "https://github.com/MetaLabs-inc/react-native-components-tracking/issues"
   },
-  "homepage": "https://github.com/Marcoo09/react-native-components-tracking#readme",
+  "homepage": "https://github.com/MetaLabs-inc/react-native-components-tracking#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
