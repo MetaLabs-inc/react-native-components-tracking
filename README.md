@@ -36,7 +36,7 @@ import analytics from '@react-native-firebase/analytics';
 import React from 'react';
 import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
-import { ComponentTracking } from '~/common/analytics/ComponentTracking';
+import { ComponentTracking } from 'react-native-components-tracking';
 
 import { styles } from './styles';
 
