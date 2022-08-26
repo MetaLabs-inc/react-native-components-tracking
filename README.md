@@ -5,7 +5,7 @@ React Native library that automatically tracks events on components.
 ## Features
 
 - Track all touch events on the components tree
-- Track component events on an easy way
+- Track component events easily
 
 ## Try it out
 
