@@ -37,7 +37,7 @@ export default function App() {
       <SafeAreaView style={styles.safeAreaViewContainer}>
         <ScrollView contentContainerStyle={styles.container}>
           <ComponentTracking
-            options={[
+            trackingOptions={[
               {
                 triggerFunctionKey: 'onEndEditing',
                 event: 'ON_END_EDITTING',
@@ -69,7 +69,7 @@ export default function App() {
             <Text>Dummy button</Text>
           </TouchableOpacity>
           <ComponentTracking
-            options={[
+            trackingOptions={[
               {
                 triggerFunctionKey: 'onValueChange',
                 event: 'ON_VALUE_CHANGE',
