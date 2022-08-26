@@ -116,7 +116,7 @@ export const Button: React.FC<LayoutProps> = (props) => {
 };
 ```
 
-We show a basic example with a button but it works with any component we want to wrap. For example, if we want to track the event `onEndEditing` of text input we can do something like that:
+We show a basic example with a button but it works with any component we want to wrap. For example, if we want to track the event `onEndEditing` of text input we can do something like this:
 
 1. Create a generic text input component.
 
