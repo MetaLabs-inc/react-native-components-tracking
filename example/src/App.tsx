@@ -37,12 +37,21 @@ export default function App() {
       <SafeAreaView style={styles.safeAreaViewContainer}>
         <ScrollView contentContainerStyle={styles.container}>
           <ComponentTracking
-            triggerFunctionKey={'onEndEditing'}
+            options={[
+              {
+                triggerFunctionKey: 'onEndEditing',
+                event: 'ON_END_EDITTING',
+                idKey: 'DUMMY_TEXT_INPUT',
+              },
+              {
+                triggerFunctionKey: 'onChangeText',
+                event: 'ON_CHANGE_TEXT',
+                idKey: 'DUMMY_TEXT_INPUT',
+              },
+            ]}
             trackEvent={(event: string) => {
               console.warn('an text input tracked', event);
             }}
-            event={'ON_END_EDITTING'}
-            idKey={'DUMMY_TEXT_INPUT'}
           >
             <TextInput
               style={styles.input}
@@ -60,12 +69,16 @@ export default function App() {
             <Text>Dummy button</Text>
           </TouchableOpacity>
           <ComponentTracking
-            triggerFunctionKey={'onValueChange'}
+            options={[
+              {
+                triggerFunctionKey: 'onValueChange',
+                event: 'ON_VALUE_CHANGE',
+                idKey: 'DUMMY_SWITCH',
+              },
+            ]}
             trackEvent={(event: string) => {
               console.warn('a switch tracked', event);
             }}
-            event={'ON_VALUE_CHANGE'}
-            idKey={'DUMMY_SWITCH'}
           >
             <Switch
               trackColor={{ false: '#767577', true: '#3E4DCE' }}
