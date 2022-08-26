@@ -29,6 +29,8 @@ yarn add react-native-components-tracking
 
 We will use Firebase Analytics in the examples made in this documentation.
 
+### ComponentTracking
+
 ```ts
 import analytics from '@react-native-firebase/analytics';
 import React from 'react';
@@ -60,10 +62,14 @@ export const Button: React.FC<LayoutProps> = (props) => {
 
   return (
     <ComponentTracking
-      triggerFunctionKey={'onPress'}
+      trackingOptions={[
+        {
+          triggerFunctionKey: 'onPress',
+          event: 'BUTTON_CLICK',
+          idKey: trackingIdKey,
+        },
+      ]}
       trackEvent={analytics().logEvent}
-      event={'BUTTON_CLICK'}
-      idKey={trackingIdKey}
     >
       <TouchableOpacity
         {...props}
@@ -98,10 +104,14 @@ export const Button: React.FC<LayoutProps> = (props) => {
 
   return (
     <ComponentTracking
-      triggerFunctionKey={triggerFunctionKey}
+      trackingOptions={[
+        {
+          triggerFunctionKey,
+          event: baseEvent,
+          idKey: trackingIdKey,
+        },
+      ]}
       trackEvent={analytics().logEvent}
-      event={baseEvent}
-      idKey={trackingIdKey}
     >
       <TouchableOpacity
         {...props}
@@ -134,10 +144,14 @@ export const CustomTextInput: React.FC<LayoutProps> = (props) => {
 
   return (
     <ComponentTracking
-      triggerFunctionKey={triggerFunctionKey}
+      trackingOptions={[
+        {
+          triggerFunctionKey,
+          event: baseEvent,
+          idKey: trackingIdKey,
+        },
+      ]}
       trackEvent={analytics().logEvent}
-      event={baseEvent}
-      idKey={trackingIdKey}
     >
       <TextInput
         style={style}
@@ -167,6 +181,10 @@ export const CustomTextInput: React.FC<LayoutProps> = (props) => {
       }
     }>
 ```
+
+In the examples above, we showed components with a single `triggerFunctionKey` to call, but ComponentTracking allows us to send a series of tracking options in case you want to automatically track more than one event.
+
+### TouchEventBoundary
 
 Another cool feature we included on this library is the possibility to track automatically all the touch events made into the application.
 

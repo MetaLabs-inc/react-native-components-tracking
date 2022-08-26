@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 
 interface LayoutProps {
   children: ReactElement;
-  options: {
+  trackingOptions: {
     triggerFunctionKey: string;
     event: string;
     idKey: string;
@@ -15,10 +15,10 @@ export const ComponentTracking: React.FC<LayoutProps> = ({
   ...otherProps
 }) => {
   let newProps = { ...children?.props };
-  const { options, trackEvent } = otherProps;
+  const { trackingOptions, trackEvent } = otherProps;
   try {
     if (children) {
-      options?.forEach((option) => {
+      trackingOptions?.forEach((option) => {
         const overridedProp = (...args: any) => {
           const result = children.props[option.triggerFunctionKey](...args);
           trackEvent(`${option.event}_${option.idKey}`);
