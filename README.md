@@ -248,7 +248,7 @@ The type assigned to the breadcrumb that is logged by the touch event.
 default: 20. The max number/depth of components to display when logging a touch's component tree.
 
 **ignoreNames** \
-Array<string | RegExp>, Accepts strings and regular expressions. Component names to ignore when logging the touch event. This prevents unhelpful logs such as "Touch event within element: View" where you still can't tell which View it occurred in.
+Array<string | RegExp>, Accepts strings and regular expressions. Component names to ignore when logging the touch event. This prevents useless logs such as: "Touch event within element: View", where you still can't tell which View it occurred in.
 
 ---
 
