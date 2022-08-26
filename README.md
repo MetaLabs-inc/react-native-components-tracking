@@ -288,6 +288,7 @@ MIT
     <td align="center"><a href="https://github.com/Marcoo09"><img src="https://avatars.githubusercontent.com/Marcoo09" width="100px;" alt=""/><br /><sub><b>Marco Fiorito</b></sub></a></td>
     <td align="center"><a href="https://github.com/matiassalles99"><img src="https://avatars.githubusercontent.com/matiassalles99" width="100px;" alt=""/><br /><sub><b>Matias Salles</b></sub></a></td>
     <td align="center"><a href="https://github.com/grazo99"><img src="https://avatars.githubusercontent.com/grazo99" width="100px;" alt=""/><br /><sub><b>Graziano Pascale</b></sub></a></td>
+    <td align="center"><a href="https://github.com/leanribeiro"><img src="https://avatars.githubusercontent.com/leanribeiro" width="100px;" alt=""/><br /><sub><b>Leandro Ribeiro</b></sub></a></td>
   </tr>
 </table>
 
