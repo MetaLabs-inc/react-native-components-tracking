@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/MetaLabs-inc/react-native-components-tracking#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
@@ -89,7 +89,8 @@
   "release-it": {
     "git": {
       "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
+      "tagName": "v${version}",
+      "upstream": "https://github.com/MetaLabs-inc/react-native-components-tracking/tree/main"
     },
     "npm": {
       "publish": true
