@@ -1,6 +1,6 @@
 # react-native-components-tracking
 
-React Native library to automatically track events on components.
+React Native library that automatically tracks events on components.
 
 ## Features
 
