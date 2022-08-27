@@ -1,6 +1,7 @@
 # react-native-components-tracking
 
 React Native library that automatically tracks events on components.
+Sometimes one does not yet know what events the client will want to track, so it is a good option to track in quantity so that later the analyst has a large amount of data to analyze user behavior.
 
 ## Features
 
