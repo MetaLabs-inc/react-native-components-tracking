@@ -1,6 +1,6 @@
 {
   "name": "react-native-components-tracking",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React Native library that automatically tracks events on components.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
