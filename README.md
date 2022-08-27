@@ -37,6 +37,7 @@ import React from 'react';
 import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 import { ComponentTracking } from 'react-native-components-tracking';
+import analytics from '@react-native-firebase/analytics';
 
 import { styles } from './styles';
 
@@ -60,6 +61,9 @@ export const Button: React.FC<LayoutProps> = (props) => {
     trackingIdKey,
   } = props;
 
+  const trackEvent = (event: string) => {
+    analytics().logEvent(event);
+  };
   return (
     <ComponentTracking
       trackingOptions={[
@@ -69,7 +73,7 @@ export const Button: React.FC<LayoutProps> = (props) => {
           idKey: trackingIdKey,
         },
       ]}
-      trackEvent={analytics().logEvent}
+      trackEvent={trackEvent}
     >
       <TouchableOpacity
         {...props}
@@ -102,6 +106,9 @@ export const Button: React.FC<LayoutProps> = (props) => {
     triggerFunctionKey,
   } = props;
 
+  const trackEvent = (event: string) => {
+    analytics().logEvent(event);
+  };
   return (
     <ComponentTracking
       trackingOptions={[
@@ -111,7 +118,7 @@ export const Button: React.FC<LayoutProps> = (props) => {
           idKey: trackingIdKey,
         },
       ]}
-      trackEvent={analytics().logEvent}
+      trackEvent={trackEvent}
     >
       <TouchableOpacity
         {...props}
@@ -142,6 +149,9 @@ export const CustomTextInput: React.FC<LayoutProps> = (props) => {
     triggerFunctionKey,
   } = props;
 
+  const trackEvent = (event: string) => {
+    analytics().logEvent(event);
+  };
   return (
     <ComponentTracking
       trackingOptions={[
@@ -151,7 +161,7 @@ export const CustomTextInput: React.FC<LayoutProps> = (props) => {
           idKey: trackingIdKey,
         },
       ]}
-      trackEvent={analytics().logEvent}
+      trackEvent={trackEvent}
     >
       <TextInput
         style={style}
@@ -205,6 +215,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { TouchEventBoundary } from 'react-native-components-tracking';
+import analytics from '@react-native-firebase/analytics';
 
 export default function App() {
   //TouchableOpacity
@@ -212,12 +223,12 @@ export default function App() {
     console.warn('button was pressed');
   };
 
+  const trackEvent = (event: string) => {
+    console.warn('an event tracked with event boundary', event);
+    analytics().logEvent(event);
+  };
   return (
-    <TouchEventBoundary
-      trackEvent={(event: string) => {
-        console.warn('an event tracked with event boundary', event);
-      }}
-    >
+    <TouchEventBoundary trackEvent={trackEvent}>
       <SafeAreaView style={styles.safeAreaViewContainer}>
         <ScrollView contentContainerStyle={styles.container}>
           <TouchableOpacity
