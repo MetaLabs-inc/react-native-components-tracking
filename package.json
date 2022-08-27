@@ -26,7 +26,9 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
-    "release": "release-it --no-git.requireUpstream",
+    "major-release": "release-it major --no-git.requireUpstream",
+    "patch-release": "release-it patch --no-git.requireUpstream",
+    "minor-release": "release-it minor --no-git.requireUpstream",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn"
   },
