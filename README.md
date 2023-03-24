@@ -32,7 +32,45 @@ yarn add react-native-components-tracking
 
 ## Usage
 
-We will use Firebase Analytics in the examples made in this documentation.
+We will use Firebase Analytics in the examples made in this documentation. But it will be analogous for other analytics providers given the events have a similar signature:
+
+**Firebase**
+
+```ts
+import analytics from '@react-native-firebase/analytics';
+
+// To log a custom event with parameters
+analytics().logEvent('event_name', { parameter_name: 'parameter_value' });
+```
+
+**Amplitude**
+
+```ts
+import analytics from '@react-native-firebase/analytics';
+
+// To log a custom event with parameters
+analytics().logEvent('event_name', { parameter_name: 'parameter_value' });
+```
+
+**Mixpanel**
+
+```ts
+import Mixpanel from 'react-native-mixpanel';
+
+// To log a custom event with parameters
+Mixpanel.trackWithProperties('event_name', {
+  parameter_name: 'parameter_value',
+});
+```
+
+**Segment**
+
+```ts
+import analytics from '@segment/analytics-react-native';
+
+// To log a custom event with parameters
+analytics.track('event_name', { parameter_name: 'parameter_value' });
+```
 
 ### ComponentTracking
 
@@ -66,8 +104,8 @@ export const Button: React.FC<LayoutProps> = (props) => {
     trackingIdKey,
   } = props;
 
-  const trackEvent = (event: string) => {
-    analytics().logEvent(event);
+  const trackEvent = (event: string, params?: any) => {
+    analytics().logEvent(event, params);
   };
   return (
     <ComponentTracking
@@ -76,6 +114,9 @@ export const Button: React.FC<LayoutProps> = (props) => {
           triggerFunctionKey: 'onPress',
           event: 'BUTTON_CLICK',
           idKey: trackingIdKey,
+          params: {
+            parameter_name: 'parameter_value',
+          },
         },
       ]}
       trackEvent={trackEvent}
@@ -95,6 +136,7 @@ export const Button: React.FC<LayoutProps> = (props) => {
 
 Above, we defined a generic Button component which receives a trackingIdKey which will be used to customize the tracking event for each Button.
 Then we will use the button like any other component and it will track the `BUTTON_CLICK_${trackingIdKey}` event when it is pressed.
+Aditionally, we track some params when the onPress is triggered.
 
 Also, we can make it a bit more generic and receive not only the trackingIdKey but also the base event name and the triggerFunctionKey:
 
@@ -154,8 +196,8 @@ export const CustomTextInput: React.FC<LayoutProps> = (props) => {
     triggerFunctionKey,
   } = props;
 
-  const trackEvent = (event: string) => {
-    analytics().logEvent(event);
+  const trackEvent = (event: string, params?: any) => {
+    analytics().logEvent(event, params);
   };
   return (
     <ComponentTracking
@@ -304,7 +346,6 @@ MIT
     <td align="center"><a href="https://github.com/Marcoo09"><img src="https://avatars.githubusercontent.com/Marcoo09" width="100px;" alt=""/><br /><sub><b>Marco Fiorito</b></sub></a></td>
     <td align="center"><a href="https://github.com/matiassalles99"><img src="https://avatars.githubusercontent.com/matiassalles99" width="100px;" alt=""/><br /><sub><b>Matias Salles</b></sub></a></td>
     <td align="center"><a href="https://github.com/grazo99"><img src="https://avatars.githubusercontent.com/grazo99" width="100px;" alt=""/><br /><sub><b>Graziano Pascale</b></sub></a></td>
-    <td align="center"><a href="https://github.com/leanribeiro"><img src="https://avatars.githubusercontent.com/leanribeiro" width="100px;" alt=""/><br /><sub><b>Leandro Ribeiro</b></sub></a></td>
   </tr>
 </table>
 
