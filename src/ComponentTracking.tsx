@@ -1,13 +1,21 @@
 import React, { ReactElement } from 'react';
 
+type JSONValue =
+  | string
+  | number
+  | boolean
+  | { [x: string]: JSONValue }
+  | Array<JSONValue>;
+
 interface LayoutProps {
   children: ReactElement;
   trackingOptions: {
     triggerFunctionKey: string;
     event: string;
     idKey: string;
+    params?: JSONValue;
   }[];
-  trackEvent: (eventName: string) => void;
+  trackEvent: (eventName: string, params?: JSONValue) => void;
 }
 
 export const ComponentTracking: React.FC<LayoutProps> = ({
@@ -21,7 +29,11 @@ export const ComponentTracking: React.FC<LayoutProps> = ({
       trackingOptions?.forEach((option) => {
         const overridedProp = (...args: any) => {
           const result = children.props[option.triggerFunctionKey](...args);
-          trackEvent(`${option.event}_${option.idKey}`);
+          if (option.params) {
+            trackEvent(`${option.event}_${option.idKey}`, option.params);
+          } else {
+            trackEvent(`${option.event}_${option.idKey}`);
+          }
           return result;
         };
         newProps[option.triggerFunctionKey] = overridedProp;
